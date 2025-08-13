@@ -1,35 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+//importando a funcao do react que faz o estado estado de uma variavel mudar "hook"
+import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  //uma funcao que só é uasada para campos que vao sofrer alteracoes em um projeto, por exemplo um local que muda ao clicar um botao.
+  //2 parametros -> primeiro é o valor do estado e segundo é o nome da funcao que vai fazer alteracao do estado e dento do useState é o valor inicial da estado
+  const [message, setMassage] = useState("ola mundo");
 
+  //faz uma funcao get retonar uma html "JSX"
+
+  //retunr do por ter um elemento Ex: uma div que engloba tudo
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <h1>{message}</h1>
+      <button
+        onClick={() => {
+          setMassage("Ola fui clicado");
+        }}
+      >
+        Mudar mensagem que esta no H1
+      </button>
+    </div>
+  );
 }
 
-export default App
+export default App;
