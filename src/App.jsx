@@ -34,7 +34,18 @@ function App() {
       }
       return task;
     });
+
     setTasks(newTask);
+  }
+
+  function onTaskRemove(taskId) {
+    const TasksRemaining = tasks.map((task) => {
+      if (task.id == taskId) {
+        TasksRemaining.slice(task.id, 1);
+        return { ...task };
+      }
+    });
+    setTasks(TasksRemaining);
   }
 
   return (
@@ -44,7 +55,11 @@ function App() {
           Gerenciador de Tarefas
         </h1>
         {/* estou falando que a props de Tasks vai se chamar tasks que recebe o estado tasks, tudo que vc passa dentro do componente é uma props */}
-        <Tasks tasks={tasks} onTaskClick={onTaskClick} />
+        <Tasks
+          tasks={tasks}
+          onTaskClick={onTaskClick}
+          onTaskRemove={onTaskRemove}
+        />
         <AddTasks />
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { ChevronRightIcon } from "lucide-react";
+import { ChevronRightIcon, DeleteIcon } from "lucide-react";
 
 function Tasks(props) {
   console.log(props);
@@ -8,13 +8,23 @@ function Tasks(props) {
         <li key={task.id} className="flex gap-2">
           <button
             onClick={() => props.onTaskClick(task.id)}
-            className=" bg-slate-400 text-white p-2 rounded-md w-full"
+            //mudando diretamente a classe com js
+            className={` bg-slate-400 text-white p-2 rounded-md w-full ${
+              task.isCompleted && "line-through"
+            }`}
           >
             {task.title}
-          {task.isCompleted ? "COPLETO" : "INCOMPLETO"}
           </button>
           <button className="bg-slate-400 p-2 rounded-md text-white">
             <ChevronRightIcon />
+          </button>
+
+          {/* importante para a minha refatoracao de codigo */}
+          <button
+            onClick={() => props.onTaskRemove(task.id)}
+            className="bg-slate-400 p-2 rounded-md text-white"
+          >
+            <DeleteIcon />
           </button>
         </li>
       ))}
