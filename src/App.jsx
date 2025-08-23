@@ -39,13 +39,10 @@ function App() {
   }
 
   function onTaskRemove(taskId) {
-    const TasksRemaining = tasks.map((task) => {
-      if (task.id == taskId) {
-        TasksRemaining.slice(task.id, 1);
-        return { ...task };
-      }
-    });
-    setTasks(TasksRemaining);
+    //filter remove itens exluidos
+    const itemRemovido = tasks.filter((task) => task.id === taskId);
+
+    setTasks(itemRemovido);
   }
 
   return (
